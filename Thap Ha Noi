@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int i=0;
+void thapHN(int n, char a ,char b ,char c ){
+	
+	// a nguon , b dich , c trung gian
+	if ( n==0 ) return;
+	else if( n==1 ) printf("Buoc%d Chuyen dia %d tu %c sang %c\n",++i,n,a,b);
+	else{
+		// de quy 
+		thapHN(n-1,a,c,b);
+		// chuyen n-1 dia tu a sang c lay b lam trung gian
+		printf("Buoc%d Chuyen dia %d tu %c sang %c\n",++i,n,a,b);
+		// chuyen 1 dia con lai tu a sang b lay c lam trung gian
+		thapHN(n-1,c,b,a);
+		// chuyen n-1 dia tu c sang b lay a lam trung gian
+	}
+// kho hieu the nho :))	
+}
+int main(){
+	int n;
+	char a = 'A', b='B',c='C';
+	cin >> n;
+	thapHN(n,a,b,c);
+	
+}
