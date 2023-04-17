@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+int main(){
+	int n,s;
+	cin >> n >> s;
+	int a[100001],dp[100001];
+	for ( int i=0 ;i<n ;i++ ) cin >> a[i];
+	sort ( a ,a+n ,less<int>());
+//	for ( int i=0 ;i<n ;i++ ) cout << a[i] <<  " ";
+	for ( int i=0 ;i<=s ;i++ ) dp[i] = 1e9;
+	dp[0]=1;
+	for ( int i=0 ;i<n ;i++ ){
+		for ( int j=0 ;j<=s ;j++ ){
+			if ( j-a[i]>=0 &&  dp[j-a[i]] !=1e9){
+				dp[j] = min( dp[j] , dp[j-a[i]] +1 );
+			}
+		}
+	}
+	if ( dp[s] == 1e9 ) cout <<"ATM khong the tra tien";
+	else  cout << dp[s]-1;
+}
