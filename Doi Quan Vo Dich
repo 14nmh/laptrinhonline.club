@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+// i*(i+1)/2 so tam giac, tong cua cap so cong  
+int main(){
+	vector<long>v;
+    for(int i=1; i<100000; i++){
+    	long x=i*(i+1)/2;
+    	long tmp=sqrt(x+1);
+    	if(tmp*tmp==x+1) v.push_back(x+1);
+	}
+	while(1){
+		int a,b,dem=0; cin>>a>>b;
+		if(a==0&&b==0) return 0;
+		else{
+			for(auto p:v){
+				if(p>a&&p<b) dem++;
+			}
+		}
+		cout<<dem<<endl;
+	}
+}
